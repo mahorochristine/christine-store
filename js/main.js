@@ -400,20 +400,50 @@ const hamburger = $('hamburger');
 const navLinks = document.querySelector('.nav-links');
 console.log('hamburger found:', !!hamburger);
 if (hamburger && navLinks) {
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('mobile-open');
+  hamburger.setAttribute('aria-expanded', 'false');
+
+  const closeMobileNav = () => {
+    navLinks.classList.remove('mobile-open');
+    hamburger.setAttribute('aria-expanded', 'false');
     const icon = hamburger.querySelector('i');
-    if (icon) {
-      icon.className = navLinks.classList.contains('mobile-open') ? 'fas fa-times' : 'fas fa-bars';
+    if (icon) icon.className = 'fas fa-bars';
+  };
+
+  const openMobileNav = () => {
+    navLinks.classList.add('mobile-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    const icon = hamburger.querySelector('i');
+    if (icon) icon.className = 'fas fa-times';
+  };
+
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle('mobile-open');
+    const isOpen = navLinks.classList.contains('mobile-open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    const icon = hamburger.querySelector('i');
+    if (icon) icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+  });
+
+  // Close menu when clicking a nav link or nav icon inside the mobile menu
+  navLinks.addEventListener('click', (e) => {
+    if (e.target.closest('.nav-link') || e.target.closest('.nav-icon-btn')) {
+      closeMobileNav();
     }
   });
 
-  // Close menu when clicking a link
-  navLinks.addEventListener('click', (e) => {
-    if (e.target.closest('.nav-link') || e.target.closest('.nav-icon-btn')) {
-      navLinks.classList.remove('mobile-open');
-      const icon = hamburger.querySelector('i');
-      if (icon) icon.className = 'fas fa-bars';
+  // Close the menu when clicking outside the nav on mobile
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+      if (navLinks.classList.contains('mobile-open')) {
+        closeMobileNav();
+      }
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 600 && navLinks.classList.contains('mobile-open')) {
+      closeMobileNav();
     }
   });
 }
