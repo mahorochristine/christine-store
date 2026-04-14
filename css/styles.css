@@ -262,7 +262,7 @@ body.dark-theme .nav-links { background: rgba(3,16,33,0.96); border-bottom-color
   border-color: var(--navy);
   transform: translateY(-2px);
 }
-..btn-full { width: 100%; justify-content: center; }
+.btn-full { width: 100%; justify-content: center; }
 
 .feature-grid, .why-grid {
   display: grid;
@@ -1145,6 +1145,7 @@ body.dark-theme .nav-links { background: rgba(3,16,33,0.96); border-bottom-color
 /* ─── RESPONSIVE — MOBILE ─── */
 @media (max-width: 599px) {
   .nav-container {
+    position: relative;
     padding: 0.75rem 1rem;
   }
   .hamburger {
@@ -1157,14 +1158,18 @@ body.dark-theme .nav-links { background: rgba(3,16,33,0.96); border-bottom-color
     position: absolute;
     top: 100%;
     left: 0;
+    right: 0;
     width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
     background: var(--white);
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid rgba(0,102,255,0.08);
     flex-direction: column;
     align-items: stretch;
-    padding: 1rem 0;
-    box-shadow: var(--shadow-md);
+    padding: 0.75rem 0.75rem 1rem;
+    box-shadow: var(--shadow-lg);
     z-index: 100;
+    overflow: hidden;
   }
   .nav-links.mobile-open {
     display: flex;
@@ -1174,15 +1179,19 @@ body.dark-theme .nav-links { background: rgba(3,16,33,0.96); border-bottom-color
   }
   .nav-link {
     justify-content: flex-start;
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1rem;
+    width: 100%;
     border-radius: 0;
     margin: 0;
+    min-width: 0;
+    white-space: normal;
+    flex-wrap: wrap;
   }
   .nav-link:hover {
     background: rgba(0,102,255,0.06);
   }
-  .nav-icon-btn {
-    margin: 0.25rem 1rem;
+  .nav-links .nav-icon-btn {
+    margin: 0.5rem 1rem 0;
   }
   .hero-content {
     padding: 2rem 1rem;
