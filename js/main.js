@@ -6,6 +6,8 @@
 
 'use strict';
 
+console.log('Script loaded');
+
 /* ─── STATE ─── */
 let isLoggedIn = false;
 let currentUser = null;
@@ -83,12 +85,41 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove('visible'), 3000);
 }
 
+const THEME_KEY = 'christine-theme';
+
+function applyTheme(theme) {
+  console.log('Applying theme:', theme);
+  document.body.classList.toggle('dark-theme', theme === 'dark');
+  const icon = $('theme-toggle')?.querySelector('i');
+  if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch (e) {
+    // localStorage not available
+  }
+}
+
+function toggleTheme() {
+  console.log('Toggling theme');
+  applyTheme(document.body.classList.contains('dark-theme') ? 'light' : 'dark');
+}
+
 /* ─── LIVE CLOCK ─── */
 function updateClock() {
   const now = new Date();
-  const opts = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  const dateOpts = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  const timeOpts = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
   const clockEl = $('live-clock');
-  if (clockEl) clockEl.textContent = now.toLocaleDateString('en-US', opts);
+  const navTimeEl = $('nav-time');
+  if (clockEl) clockEl.textContent = now.toLocaleString('en-US', dateOpts);
+  if (navTimeEl) {
+    const valueEl = navTimeEl.querySelector('.nav-time-value');
+    if (valueEl) {
+      valueEl.textContent = now.toLocaleTimeString('en-US', timeOpts);
+    } else {
+      navTimeEl.innerHTML = `<i class="fas fa-clock"></i> <span class="nav-time-value">${now.toLocaleTimeString('en-US', timeOpts)}</span>`;
+    }
+  }
 }
 updateClock();
 setInterval(updateClock, 1000);
@@ -191,47 +222,73 @@ function handleAddToCart(productId, event) {
 }
 
 /* ─── HERO / ORDER CTA ─── */
-$('hero-cta').addEventListener('click', () => {
-  requireAuth(() => {
-    showToast('🎉 Welcome! Browse and add items to your cart.');
-    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+const heroCta = $('hero-cta');
+if (heroCta) {
+  heroCta.addEventListener('click', () => {
+    requireAuth(() => {
+      showToast('🎉 Welcome! Browse and add items to your cart.');
+      const productsSection = document.getElementById('products');
+      if (productsSection) productsSection.scrollIntoView({ behavior: 'smooth' });
+    });
   });
-});
+}
 
-$('user-btn').addEventListener('click', () => {
-  if (isLoggedIn) {
-    showToast(`👋 Logged in as ${currentUser.name}`);
-  } else {
-    pendingAction = null;
-    openModal();
-  }
-});
-
-$('cart-btn').addEventListener('click', () => {
-  requireAuth(() => {
-    showToast(cartCount > 0 ? `🛒 You have ${cartCount} item(s) in your cart.` : '🛒 Your cart is empty. Start shopping!');
+const userBtn = $('user-btn');
+console.log('userBtn found:', !!userBtn);
+if (userBtn) {
+  userBtn.addEventListener('click', () => {
+    console.log('User button clicked, isLoggedIn:', isLoggedIn);
+    if (isLoggedIn) {
+      showToast(`👋 Logged in as ${currentUser.name}`);
+    } else {
+      pendingAction = null;
+      openModal();
+    }
   });
-});
+}
 
+const cartBtn = $('cart-btn');
+if (cartBtn) {
+  cartBtn.addEventListener('click', () => {
+    requireAuth(() => {
+      showToast(cartCount > 0 ? `🛒 You have ${cartCount} item(s) in your cart.` : '🛒 Your cart is empty. Start shopping!');
+    });
+  });
+};
 /* ─── MODAL ─── */
 function openModal() {
+  console.log('Opening modal');
   const modal = $('auth-modal');
+  if (!modal) {
+    console.log('Modal not found');
+    return;
+  }
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
-  setTimeout(() => $('reg-name').focus(), 350);
+  setTimeout(() => {
+    const nameField = $('reg-name');
+    if (nameField) nameField.focus();
+  }, 350);
 }
 
 function closeModal() {
-  $('auth-modal').classList.remove('active');
+  const modal = $('auth-modal');
+  if (!modal) return;
+  modal.classList.remove('active');
   document.body.style.overflow = '';
   clearErrors();
-  $('auth-form').reset();
+  const authForm = $('auth-form');
+  if (authForm) authForm.reset();
 }
 
-$('modal-close-btn').addEventListener('click', closeModal);
-$('auth-modal').addEventListener('click', e => {
-  if (e.target === $('auth-modal')) closeModal();
-});
+const modalCloseBtn = $('modal-close-btn');
+if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+const authModal = $('auth-modal');
+if (authModal) {
+  authModal.addEventListener('click', e => {
+    if (e.target === authModal) closeModal();
+  });
+}
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
@@ -322,6 +379,46 @@ function handleNewsletter(e) {
 }
 
 /* ─── INIT ─── */
+// Apply theme immediately
+let storedTheme = 'light';
+try {
+  storedTheme = localStorage.getItem(THEME_KEY) || 'light';
+} catch (e) {
+  // localStorage not available
+}
+applyTheme(storedTheme);
+
+// Attach theme toggle immediately if element exists
+const themeBtn = $('theme-toggle');
+console.log('themeBtn found:', !!themeBtn);
+if (themeBtn) {
+  themeBtn.addEventListener('click', toggleTheme);
+}
+
+// Hamburger menu toggle
+const hamburger = $('hamburger');
+const navLinks = document.querySelector('.nav-links');
+console.log('hamburger found:', !!hamburger);
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('mobile-open');
+    const icon = hamburger.querySelector('i');
+    if (icon) {
+      icon.className = navLinks.classList.contains('mobile-open') ? 'fas fa-times' : 'fas fa-bars';
+    }
+  });
+
+  // Close menu when clicking a link
+  navLinks.addEventListener('click', (e) => {
+    if (e.target.closest('.nav-link') || e.target.closest('.nav-icon-btn')) {
+      navLinks.classList.remove('mobile-open');
+      const icon = hamburger.querySelector('i');
+      if (icon) icon.className = 'fas fa-bars';
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts('all');
+  updateClock(); // Update clock after DOM is ready
 });
