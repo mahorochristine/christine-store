@@ -148,7 +148,6 @@ button { cursor: pointer; font-family: inherit; }
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   width: 38px; height: 38px;
-  display: flex; align-items: center; justify-content: center;
   font-size: 1rem;
   color: var(--text-body);
   transition: var(--transition);
@@ -635,7 +634,7 @@ body.dark-theme .nav-links { background: rgba(3,16,33,0.96); border-bottom-color
   cursor: pointer;
   width: fit-content;
 }
-..cat-btn:hover { background: var(--blue); border-color: var(--blue); transform: translateX(4px); }
+.cat-btn:hover { background: var(--blue); border-color: var(--blue); transform: translateX(4px); }
 
 .gallery-highlights {
   padding: 4rem 0 6rem;
@@ -1150,6 +1149,8 @@ body.dark-theme .nav-links { background: rgba(3,16,33,0.96); border-bottom-color
   }
   .hamburger {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .nav-links {
     display: none;
