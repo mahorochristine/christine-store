@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Christine Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="announcement-bar">
+    <span><i class="fas fa-bolt"></i> Free shipping on orders over 75,000 rwf &nbsp;|&nbsp; </span>
+    <span id="live-clock"></span>
+  </div>
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon"><i class="fas fa-gem"></i></span>
+        <span class="logo-text">Christine<span class="logo-accent">Store</span></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-links">
+        <span class="nav-time" id="nav-time"><i class="fas fa-clock"></i> <span class="nav-time-value"></span></span>
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i><span>About Us</span></a>
+        <a href="services.html" class="nav-link"><i class="fas fa-concierge-bell"></i><span>Services</span></a>
+        <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i><span>Gallery</span></a>
+        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i><span>Contact</span></a>
+        <button class="nav-icon-btn" id="cart-btn"><i class="fas fa-shopping-bag"></i><span class="badge" id="cart-badge">0</span></button>
+        <button class="nav-icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        <button class="nav-icon-btn" id="user-btn" aria-label="Open login form"><i class="fas fa-user-circle"></i></button>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero hero-compact" id="home">
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="hero-badge"><i class="fas fa-images"></i> Gallery</div>
+          <h1 class="hero-title">Explore curated looks and premium products from Christine Store.</h1>
+          <p class="hero-subtitle">A visual showcase of our latest launches, seasonal collections, and customer favorites.</p>
+          <div class="hero-detail-grid">
+            <div class="hero-detail-card">
+              <span class="detail-pill">Premium styling</span>
+              <p>Each image is selected to inspire confident, modern wardrobe choices.</p>
+            </div>
+            <div class="hero-detail-card">
+              <span class="detail-pill">Seasonal collections</span>
+              <p>Discover the latest drops, trending textures, and signature pieces for every occasion.</p>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="services.html" class="btn btn-primary">Explore Services <i class="fas fa-arrow-right"></i></a>
+            <a href="contact.html" class="btn btn-ghost" style="color:white;">Get in Touch <i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-header">
+      <div class="container">
+        <p class="section-label">Visual Stories</p>
+        <h2 class="section-title">Highlights from our latest collections</h2>
+        <p class="section-sub">Discover the mood, materials, and details that define our premium offerings.</p>
+      </div>
+    </section>
+    <section class="categories">
+      <div class="container">
+        <div class="cat-grid">
+          <div class="cat-card"><img src="https://images.unsplash.com/photo-1495121605193-b116b5b9c6bd?w=600&q=80" alt="Gallery 1" /><div class="cat-overlay"><span class="cat-label">Modern Essentials</span><p class="cat-desc">Seasonal pieces styled for everyday elegance.</p></div></div>
+          <div class="cat-card"><img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=600&q=80" alt="Gallery 2" /><div class="cat-overlay"><span class="cat-label">Bold Statements</span><p class="cat-desc">Head-turning looks for special events and evenings out.</p></div></div>
+          <div class="cat-card"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" alt="Gallery 3" /><div class="cat-overlay"><span class="cat-label">Accessory Edit</span><p class="cat-desc">Finishing touches that elevate every outfit.</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="gallery-highlights">
+      <div class="container">
+        <div class="gallery-highlight-grid">
+          <div class="highlight-card">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=900&q=80" alt="Styled collection" />
+            <div class="highlight-copy">
+              <span class="section-label">Style Story</span>
+              <h3>Seasonal edit crafted to inspire</h3>
+              <p>Each look is assembled with premium fabrics, thoughtful textures, and a palette that feels modern yet timeless.</p>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?w=900&q=80" alt="Shop the look" />
+            <div class="highlight-copy">
+              <span class="section-label">Curated Edit</span>
+              <h3>Shop the refined, wearable collection</h3>
+              <p>From statement silhouettes to everyday staples, our gallery reveals pieces built to move with you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo"><i class="fas fa-gem"></i><span>Christine<span>Store</span></span></div>
+          <p class="footer-bio">A premium marketplace built for those who demand quality, style, and seamless shopping — delivered with care.</p>
+          <div class="footer-socials"><a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a><a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a></div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Track Order</a></li><li><a href="#">Returns &amp; Refunds</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">FAQs</a></li><li><a href="#">Contact Us</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul class="contact-list"><li><i class="fas fa-envelope"></i> hello@christinestore.com</li><li><i class="fas fa-phone"></i> +250 790 167 223</li><li><i class="fas fa-map-marker-alt"></i> Nyakinama, Musanze</li></ul><div class="payment-icons"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-cc-apple-pay"></i></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Christine Store. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Developed & Designed by Christine MAHORO</a></div></div>
+    </div>
+  </footer>
+  <div class="modal-overlay" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="modal-logo"><i class="fas fa-gem"></i></div>
+        <h2 id="modal-heading">Create Your Account</h2>
+        <p>Sign up to place your order and track your purchases.</p>
+      </div>
+      <form class="modal-form" id="auth-form" onsubmit="handleAuthSubmit(event)" novalidate>
+        <div class="form-group">
+          <label for="reg-name">Full Name</label>
+          <div class="input-wrap">
+            <i class="fas fa-user"></i>
+            <input type="text" id="reg-name" placeholder="Jane Doe" autocomplete="name" />
+          </div>
+          <span class="field-error" id="name-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="reg-email">Email Address</label>
+          <div class="input-wrap">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="reg-email" placeholder="jane@example.com" autocomplete="email" />
+          </div>
+          <span class="field-error" id="email-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <div class="input-wrap">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="reg-password" placeholder="Min. 8 characters" autocomplete="new-password" />
+          </div>
+          <span class="field-error" id="pass-error"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">
+          Create Account &amp; Continue <i class="fas fa-arrow-right"></i>
+        </button>
+        <p class="modal-terms">
+          By registering you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-msg">Added to cart!</span>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+</html>

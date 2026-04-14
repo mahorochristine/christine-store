@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
   <!-- ANNOUNCEMENT BAR -->
   <div class="announcement-bar">
     <span><i class="fas fa-bolt"></i> Free shipping on orders over 75,000 rwf &nbsp;|&nbsp; </span>
@@ -21,19 +20,28 @@
   <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="#" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <span class="logo-icon"><i class="fas fa-gem"></i></span>
         <span class="logo-text">Christine<span class="logo-accent">Store</span></span>
       </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
       <nav class="nav-links">
-        <a href="#categories" class="nav-link"><i class="fas fa-th-large"></i><span>Shop</span></a>
-        <a href="#products" class="nav-link"><i class="fas fa-star"></i><span>New</span></a>
-        <a href="#newsletter" class="nav-link"><i class="fas fa-tag"></i><span>Deals</span></a>
+        <span class="nav-time" id="nav-time"><i class="fas fa-clock"></i> <span class="nav-time-value"></span></span>
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i><span>About Us</span></a>
+        <a href="services.html" class="nav-link"><i class="fas fa-concierge-bell"></i><span>Services</span></a>
+        <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i><span>Gallery</span></a>
+        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i><span>Contact</span></a>
         <button class="nav-icon-btn" id="cart-btn">
           <i class="fas fa-shopping-bag"></i>
           <span class="badge" id="cart-badge">0</span>
         </button>
-        <button class="nav-icon-btn" id="user-btn">
+        <button class="nav-icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="nav-icon-btn" id="user-btn" aria-label="Open login form">
           <i class="fas fa-user-circle"></i>
         </button>
       </nav>
@@ -121,6 +129,34 @@
         <div class="trust-item">
           <div class="trust-icon"><i class="fas fa-award"></i></div>
           <div class="trust-info"><strong>Premium</strong><span>Quality Assured</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why-us">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Why Choose Us</p>
+        <h2 class="section-title">Style with substance, every step of the way</h2>
+        <p class="section-sub">We deliver premium fashion, trusted local service, and a seamless shopping experience from browse to delivery.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Secure shopping</h3>
+          <p>Checkout with confidence thanks to SSL protection, encrypted payments, and secure order tracking.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+          <h3>Fast local delivery</h3>
+          <p>Enjoy quick delivery across Rwanda with premium packaging and same-day updates on your order.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-award"></i></div>
+          <h3>Handpicked quality</h3>
+          <p>Every piece is curated for craftsmanship, fit, and enduring style — no fast-fashion compromises.</p>
         </div>
       </div>
     </div>
@@ -223,11 +259,11 @@
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#categories">Shop</a></li>
-            <li><a href="#products">New Arrivals</a></li>
-            <li><a href="#newsletter">Deals</a></li>
-            <li><a href="#">Lookbook</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
